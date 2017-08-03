@@ -39,9 +39,155 @@ html, body {
 }
 
 .login button {
-    opacity:.8;
+    opacity: .8;
 }
 
 .login-btn {
     margin-top: 20px;
+}
+
+/*
+    首页
+*/
+
+.index-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+/*头部*/
+.header {
+    background-color: #333;
+    padding: 10px 15px;
+}
+
+#switch_app {
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    width: 200px;
+    text-align: center;
+}
+
+#switch_app:hover {
+    color: #1ccca9;
+}
+
+#app_list {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -120px;
+    z-index: 1;
+    display: none;
+}
+
+#app_list span, #app_list a {
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+}
+
+#app_list span {
+    background-color: #ececec;
+}
+
+#app_list a:hover {
+    background-color: #ececec;
+    color: #1ccca9;
+}
+
+#app_list a:hover, #app_list a, #app_list a:visited, #app_list a:focus {
+    text-decoration: none;
+}
+
+.logo_top {
+    width: 30px;
+    margin-right: 20px;
+}
+
+.login-info {
+    color: #fff;
+}
+
+.login-out {
+    margin-left: 20px;
+    color: #fff;
+}
+
+.login-out:hover {
+    color: #1ccca9;
+    text-decoration: none;
+}
+
+/*
+    主体部分
+*/
+/*左导航*/
+
+.index-part {
+    width: 100%;
+    flex: 1;
+}
+
+.left-nav {
+    background-color: #333;
+    height: 100%;
+    padding: 50px 0;
+}
+
+.left-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.left-nav a {
+    display: block;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+}
+
+.nav-list-each {
+    margin: 20px 0;
+}
+
+.index-nav-father {
+    padding: 10px 0;
+    font: normal 20px "Microsoft YaHei";
+}
+
+.index-nav-son {
+    padding: 5px 0;
+    font: normal 16px "Microsoft YaHei";
+}
+
+.index-nav-son:hover {
+    background-color: #1ccca9;
+}
+
+.left-nav .index-nav-father:hover {
+    text-decoration: none;
+    color: #1ccca9;
+}
+
+.left-nav a:hover, .left-nav a:visited, .left-nav a:active, .left-nav a:focus {
+    text-decoration: none;
+}
+
+.left-nav li {
+    color: #fff;
+}
+
+/*内容部分*/
+.index-content {
+    height: 100%;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 20px;
 }
