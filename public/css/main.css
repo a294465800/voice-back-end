@@ -153,6 +153,10 @@ html, body {
     color: #fff;
 }
 
+.nav-list li li {
+    margin: 2px 0;
+}
+
 .nav-list-each {
     margin: 20px 0;
 }
@@ -163,7 +167,7 @@ html, body {
 }
 
 .index-nav-son {
-    padding: 5px 0;
+    padding: 8px 0;
     font: normal 16px "Microsoft YaHei";
 }
 
@@ -184,10 +188,31 @@ html, body {
     color: #fff;
 }
 
+.index-nav-father.active {
+    color: #1ccca9;
+}
+
+.index-nav-son.active {
+    background-color: #1ccca9;
+}
+
 /*内容部分*/
 .index-content {
     height: 100%;
     background-color: #fff;
     box-sizing: border-box;
     padding: 20px;
+}
+
+/*面包导航*/
+.breadcrumb {
+    background-color: #fff;
+}
+
+.breadcrumb li {
+    color: #333;
+}
+
+.breadcrumb li.active {
+    color: #1ccca9;
 }

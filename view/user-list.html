@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>第一声后台管理</title>
-    <link rel="stylesheet" href="public/build/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="icon" href="public/images/logo2.ico" type="image/x-icon">
-    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="../public/build/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="icon" href="../public/images/logo2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../public/css/main.css">
 </head>
 <body>
 <section class="index-wrap">
     <!--头部-->
     <header class="clearfix header">
-        <img class="pull-left logo_top" src="public/images/logo.png" alt="第一声">
+        <img class="pull-left logo_top" src="../public/images/logo.png" alt="第一声">
         <div class="pull-left" id="switch_app">
             <span>小程序一</span>
             <div class="index-app-list" id="app_list">
@@ -50,6 +50,7 @@
                     </ul>
                 </li>
             </ul>
+            <span class="glyphicon glyphicon-th-large"></span>
         </nav>
         <!--/左导航-->
 
@@ -57,6 +58,25 @@
 
         <div class="col-md-10 index-content">
 
+            <!--面包屑导航-->
+            <ol class="breadcrumb">
+                <li>用户管理</li>
+                <li class="active">用户列表</li>
+            </ol>
+            <!--/面包屑导航-->
+
+            <div>
+                <table class="table table-bordered table-responsive">
+                    <thead class="text-center">
+                        <tr>
+                            <td class="col-md-3">用户</td>
+                            <td class="col-md-3">发布次数</td>
+                            <td class="col-md-3">评论次数</td>
+                            <td class="col-md-3">操作</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
 
         <!--/右内容-->
@@ -65,11 +85,17 @@
     <!--/主体部分-->
 </section>
 
-    <script src="public/js/jquery-3.2.1.min.js"></script>
-    <script src="public/build/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="public/js/main.js"></script>
-
+    <script src="../public/js/jquery-3.2.1.min.js"></script>
+    <script src="../public/build/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../public/js/main.js"></script>
     <!--留空js位置-->
+    <script>
+        $(function () {
+            $('#user_control').addClass('active')
+            $('#user').collapse()
+            $('#user_list').addClass('active')
+        })
+    </script>
     <!--/留空js位置-->
 </body>
 </html>
