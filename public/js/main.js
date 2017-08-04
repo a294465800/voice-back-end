@@ -97,16 +97,19 @@ $(function () {
 
 						}
 					})*/
-
-					$state_text.html('禁言中')
-					$state_text.addClass('ban')
-					$father.data('status', 2)
-					$(this).html('取消')
+					if(confirm('确定禁言吗？')){
+						$state_text.html('禁言中')
+						$state_text.addClass('ban')
+						$father.data('status', 2)
+						$(this).html('取消')
+					}
 				}else if(data.status === 2){
-					$state_text.html('正常')
-					$state_text.removeClass('ban')
-					$father.data('status', 1)
-					$(this).html('禁言')
+					if(confirm('确定取消禁言吗？')){
+						$state_text.html('正常')
+						$state_text.removeClass('ban')
+						$father.data('status', 1)
+						$(this).html('禁言')
+					}
 				}
 				return false
 			})
