@@ -72,6 +72,9 @@ $(function () {
 			this.userAll()
 			this.userAllBan()
 			this.userAllBanCancel()
+			this.userCheckReadAll()
+			this.userCheckPass()
+			this.userCheckReject()
 		},
 
 		//用户禁言
@@ -216,7 +219,74 @@ $(function () {
 					 })*/
 				}
 			})
-		}
+		},
+
+		//用户审核通过
+		userCheckPass: function () {
+			var $check_pass = $('.check-pass')
+
+			$check_pass.on('click', function () {
+				var $father = $(this).parents('.check-item'),
+					id = $father.data('id')
+				/*$.ajax({
+					url: globalData.host,
+					data: {
+						id: id
+					},
+					success: function () {
+
+					}
+				})*/
+				$father.remove()
+			})
+		},
+
+		//用户审核拒绝
+		userCheckReject: function () {
+			var $check_pass = $('.check-pass')
+
+			$check_pass.on('click', function () {
+				var $father = $(this).parents('.check-item'),
+					id = $father.data('id')
+				/*$.ajax({
+				 url: globalData.host,
+				 data: {
+				 id: id
+				 },
+				 success: function () {
+
+				 }
+				 })*/
+				$father.remove()
+			})
+		},
+
+		//用户审核阅读全文
+		userCheckReadAll: function () {
+			var $read_all = $('.check-read-all')
+			$read_all.on('click', function () {
+
+				//status为1是缩略模式，status为2是展开模式
+				var status = $(this).data('status'),
+					$icon = $(this).find('.glyphicon'),
+					$text = $(this).find('.check-read-all-text'),
+					$content = $(this).siblings('.check-item-content-part')
+
+				if(status === 1){
+					$(this).data('status', 2)
+					$content.addClass('active')
+					$icon.removeClass('glyphicon-chevron-down')
+					$icon.addClass('glyphicon-chevron-up')
+					$text.html('收起')
+				}else if(status === 2){
+					$(this).data('status', 1)
+					$content.removeClass('active')
+					$icon.removeClass('glyphicon-chevron-up')
+					$icon.addClass('glyphicon-chevron-down')
+					$text.html('阅读全文')
+				}
+			})
+		},
 	}
 
 	//启动程序

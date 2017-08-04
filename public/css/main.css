@@ -374,3 +374,135 @@ html, body {
 .ban {
     color: #d9534f;
 }
+
+
+/*
+    审核
+*/
+/*用户审核*/
+.check-list {
+    width: 700px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.check-item {
+    box-sizing: border-box;
+    border: 1px solid #1ccca9;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.check-item-function {
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+
+.check-item-function span {
+    margin: 0 5px;
+    cursor: pointer;
+    color: #fff;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.check-pass {
+    background-color: #398439;
+}
+
+.check-reject {
+    background-color: #d9534f;
+}
+
+.check-item-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.check-item-header-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.check-item-header-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.check-item-header-time {
+    color: #666;
+    font-size: 14px;
+}
+
+.check-item-content-part {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.check-item-content-cover {
+    width: 190px;
+    height: 105px;
+    margin-right: 18px;
+    border-radius: 4px;
+    background-position: 50%;
+}
+
+.check-item-content-wrap {
+    flex: 1;
+}
+
+.check-item-content {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+}
+
+.check-read-all span {
+    cursor: pointer;
+    color: #8590a6;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.check-read-all span:hover {
+    color: #666;
+}
+
+.check-item-img-group {
+    width: 100%;
+    padding: 10px 10px 0 10px;
+    display: none;
+}
+
+.check-item-content-img {
+    width: 100%;
+    background-position: 50%;
+    margin-bottom: 10px;
+}
+
+/*激活阅读全文后样式*/
+
+.check-item-content-part.active .check-item-content-cover {
+    display: none;
+}
+
+.check-item-content-part.active .check-item-content {
+    display: block;
+}
+
+.check-item-content-part.active .check-item-img-group {
+    display: block;
+}

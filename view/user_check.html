@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一声后台管理</title>
+    <link rel="stylesheet" href="../public/build/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="icon" href="../public/images/logo2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../public/css/main.css">
+</head>
+<body>
+<section class="index-wrap">
+    <!--头部-->
+    <header class="clearfix header">
+        <img class="pull-left logo_top" src="../public/images/logo.png" alt="第一声">
+        <div class="pull-left" id="switch_app">
+            <span>小程序一</span>
+            <div class="index-app-list" id="app_list">
+                <span>小程序一</span>
+                <a href="">小程序二</a>
+                <a href="">小程序三</a>
+            </div>
+        </div>
+        <div class="pull-right login-info">
+            <span>哈喽，卖女孩的小火柴</span>
+            <a href="" class="login-out">退出</a>
+        </div>
+    </header>
+    <!--/头部-->
+
+    <!--主体部分-->
+    <section class="clearfix index-part">
+
+        <!--左导航-->
+        <nav class="index-part-left hidden-sm left-nav" id="index_nav">
+            <ul class="nav-list">
+                <li class="nav-list-each">
+                    <a data-toggle="collapse" href="#user" data-parent="#index_nav" class="index-nav-father" id="user_control">用户管理</a>
+                    <ul id="user" class="collapse">
+                        <li><a href="" class="index-nav-son" id="user_list">用户列表</a></li>
+                        <li><a href="" class="index-nav-son" id="user_check">待审核</a></li>
+                        <li><a href="" class="index-nav-son" id="user_past">已通过</a></li>
+                    </ul>
+                </li>
+                <li class="nav-list-each">
+                    <a data-toggle="collapse" href="#ad" data-parent="#index_nav" class="index-nav-father" id="ad_control">商户管理</a>
+                    <ul id="ad" class="collapse">
+                        <li><a href="" class="index-nav-son" id="ad_list">商户列表</a></li>
+                        <li><a href="" class="index-nav-son" id="ad_check">待审核</a></li>
+                        <li><a href="" class="index-nav-son" id="ad_past">已通过</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <span class="glyphicon glyphicon-th-list nav-btn" id="nav_hide"></span>
+        </nav>
+        <nav class="nav_hide" id="index_nav_hide">
+            <span class="glyphicon glyphicon-th-list nav-btn" id="nav_show"></span>
+        </nav>
+        <!--/左导航-->
+
+        <!--右内容-->
+
+        <div class="index-part-right index-content">
+
+            <!--这里开始不同-->
+
+            <div class="check-list">
+                <div class="check-item" data-id="1">
+                    <div class="check-item-function clearfix">
+                        <span class="check-pass">通过</span>
+                        <span class="check-reject">拒绝</span>
+                    </div>
+                    <div class="check-item-header">
+                        <img class="check-item-header-img" src="http://p2.wmpic.me/article/2014/11/27/1417067254_zsUTqfiY.jpg" alt="爱吃鱼的猫">
+                        <span class="check-item-header-name">爱吃鱼的猫</span>
+                        <span class="check-item-header-time">2017-06-12 22:11</span>
+                    </div>
+                    <div class="check-item-content-part clearfix">
+                        <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-cover">
+                        <div class="check-item-content-wrap">
+                            <div class="check-item-content">
+                                判刑是本着教育和维护社会安全的目的来实施的，所以个人认为，如果你都永久ED了，那就不会有任何强奸性质的危害，应当立即释放。
+                                <br>
+                                P.S.
+                                <br>
+                                大家不应该忽略题目“服药彻底消灭性欲望”的设定（逃
+                            </div>
+                            <div class="check-item-img-group">
+                                <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-img">
+                                <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-img">
+                                <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-img">
+                                <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="check-read-all text-right" data-status="1"><span class="check-read-all-text">阅读全文</span><span class="glyphicon glyphicon-chevron-down"></span></div>
+                </div>
+                <div class="check-item">
+                    <div class="check-item-function clearfix">
+                        <span class="check-pass">通过</span>
+                        <span class="check-reject">拒绝</span>
+                    </div>
+                    <div class="check-item-header">
+                        <img class="check-item-header-img" src="http://p2.wmpic.me/article/2014/11/27/1417067254_zsUTqfiY.jpg" alt="爱吃鱼的猫">
+                        <span class="check-item-header-name">爱吃鱼的猫</span>
+                        <span class="check-item-header-time">2017-06-12 22:11</span>
+                    </div>
+                    <div class="check-item-content-part clearfix">
+                        <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-cover">
+                        <div class="check-item-content-wrap">
+                            <div class="check-item-content">
+                                判刑是本着教育和维护社会安全的目的来实施的，所以个人认为，如果你都永久ED了，那就不会有任何强奸性质的危害，应当立即释放。
+                                <br>
+                                P.S.
+                                <br>
+                                大家不应该忽略题目“服药彻底消灭性欲望”的设定（逃
+                            </div>
+                            <div class="check-item-img-group">
+                                <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-img">
+                                <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-img">
+                                <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-img">
+                                <img src="http://www.taiwan.net.tw/resources/images/Attractions/0001095.jpg" alt="封面" class="check-item-content-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="check-read-all text-right" data-status="1"><span class="check-read-all-text">阅读全文</span><span class="glyphicon glyphicon-chevron-down"></span></div>
+                </div>
+            </div>
+
+            <!--页码放这里-->
+            <div class="page">
+            </div>
+            <!--/页码放这里-->
+
+            <!--/这里开始不同-->
+        </div>
+
+        <!--/右内容-->
+
+    </section>
+    <!--/主体部分-->
+    <footer class="index-footer">
+        <span>CopyRight &copy; 2017 Sennki All Rights Reserved <a href="">粤ICP备案17065039号-1</a></span>
+    </footer>
+</section>
+
+    <script src="../public/js/jquery-3.2.1.min.js"></script>
+    <script src="../public/build/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../public/js/main.js"></script>
+
+    <!--留空js位置-->
+    <script>
+        $(function () {
+            $('#user_control').addClass('active')
+            $('#user').collapse()
+            $('#user_check').addClass('active')
+        })
+    </script>
+    <!--/留空js位置-->
+</body>
+</html>
