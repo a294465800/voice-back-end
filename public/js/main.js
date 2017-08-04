@@ -5,12 +5,26 @@
 $(function () {
 
 	//所有数据
-	var data = {
-
+	var globalData = {
+		host: 'https://sennkisystem.cn/api'
 	}
 
-	//函数部分
-	var func = {
+	//中间件
+	var octopus = {
+
+		init: function () {
+			funcCommon.init()
+			funcUser.init()
+		}
+	}
+
+	//通用函数部分
+	var funcCommon = {
+
+		init: function () {
+			this.appSwitch()
+			this.navSwitch()
+		},
 
 		//区小程序切换
 		appSwitch: function () {
@@ -28,9 +42,180 @@ $(function () {
 					$app_list.show()
 				}
 			})
+		},
+
+		//导航切换
+		navSwitch: function () {
+			var $nav_show = $('#nav_show'),
+				$nav_hide = $('#nav_hide'),
+				$index_nav = $('#index_nav'),
+				$index_nav_hide = $('#index_nav_hide')
+
+			$nav_show.on('click',function () {
+				$index_nav.show()
+				$index_nav_hide.hide()
+			})
+
+			$nav_hide.on('click',function () {
+				$index_nav_hide.show()
+				$index_nav.hide()
+			})
+		},
+
+	}
+
+	//用户管理函数
+	var funcUser = {
+		//初始化
+		init: function () {
+			this.userBan()
+			this.userAll()
+			this.userAllBan()
+			this.userAllBanCancel()
+		},
+
+		//用户禁言
+		userBan: function () {
+			var $user_ban = $('.user-ban')
+			$user_ban.on('click', function () {
+				var $father = $(this).parents('tr'),
+					$state_text = $father.find('.status'),
+					data = $father.data()
+
+				//1是正常，2是禁言
+				if(data.status === 1){
+					/**
+					* 发起请求
+					* */
+					/*$.ajax({
+						url: globalData.host,
+						method: 'POST',
+						data: {
+							id: data.id
+						},
+						success: function () {
+
+						}
+					})*/
+
+					$state_text.html('禁言中')
+					$state_text.addClass('ban')
+					$father.data('status', 2)
+					$(this).html('取消')
+				}else if(data.status === 2){
+					$state_text.html('正常')
+					$state_text.removeClass('ban')
+					$father.data('status', 1)
+					$(this).html('禁言')
+				}
+				return false
+			})
+		},
+		
+		//全选
+		userAll: function () {
+			var $user_all = $('#user_all'),
+				$checkbox = $user_all.find("input[type='checkbox']"),
+				$user_name = $('.user-name')
+
+			$user_all.on('click', function () {
+				var checked = $checkbox.prop('checked')
+				if(checked){
+					$checkbox.prop('checked', false)
+					$user_name.prop('checked', false)
+				}else {
+					$checkbox.prop('checked', true)
+					$user_name.prop('checked', true)
+				}
+			})
+		},
+
+		//禁言函数
+		userAllBanFunc: function (target, ban) {
+			var data = []
+
+			if(ban){
+				for(var i = 0; i < target.length; i++){
+					var checked = $(target[i]).prop('checked'),
+						$father = $(target[i]).parents('tr'),
+						tmp = $father.data()
+					if(checked && tmp.status === 1){
+						$father.data('status', 2)
+						$father.find('.status').html('禁言中')
+						$father.find('.status').addClass('ban')
+						$father.find('a').html('取消')
+						data.push(tmp.id)
+					}
+				}
+			}else {
+				for(var i = 0; i < target.length; i++){
+					var checked = $(target[i]).prop('checked'),
+						$father = $(target[i]).parents('tr'),
+						tmp = $father.data()
+					if(checked && tmp.status === 2){
+						console.log(tmp)
+						$father.data('status', 1)
+						$father.find('.status').html('正常')
+						$father.find('.status').removeClass('ban')
+						$father.find('a').html('禁言')
+						data.push(tmp.id)
+					}
+				}
+			}
+
+			return data
+		},
+
+		//全选后禁言
+		userAllBan: function () {
+			var $user_ban_all = $('#user_ban_all'),
+				data = []
+
+			$user_ban_all.on('click', function () {
+				var $user_name = $('.user-name')
+				data = funcUser.userAllBanFunc($user_name, true)
+				if(data.length){
+					/**
+					 * 发起请求
+					 * */
+					/*$.ajax({
+					 url: globalData.host,
+					 method: 'POST',
+					 data: data,
+					 success: function () {
+
+					 }
+					 })*/
+				}
+			})
+		},
+
+		//全选取消禁言
+		userAllBanCancel: function () {
+			var $user_ban_all_cancel = $('#user_ban_all_cancel'),
+				data = []
+
+			$user_ban_all_cancel.on('click', function () {
+				var $user_name = $('.user-name')
+				data = funcUser.userAllBanFunc($user_name, false)
+
+				if(data.length){
+					/**
+					 * 发起请求
+					 * */
+					/*$.ajax({
+					 url: globalData.host,
+					 method: 'POST',
+					 data: data,
+					 success: function () {
+
+					 }
+					 })*/
+				}
+			})
 		}
 	}
 
-	//区小程序切换
-	func.appSwitch()
+	//启动程序
+	octopus.init()
 })

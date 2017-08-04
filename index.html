@@ -31,7 +31,7 @@
     <section class="clearfix index-part">
 
         <!--左导航-->
-        <nav class="col-md-2 hidden-sm left-nav" id="index_nav">
+        <nav class="index-part-left hidden-sm left-nav" id="index_nav">
             <ul class="nav-list">
                 <li class="nav-list-each">
                     <a data-toggle="collapse" href="#user" data-parent="#index_nav" class="index-nav-father" id="user_control">用户管理</a>
@@ -42,7 +42,7 @@
                     </ul>
                 </li>
                 <li class="nav-list-each">
-                    <a data-toggle="collapse" href="#ad" data-parent="#index_nav" class="index-nav-father" id="ad_control">广告管理</a>
+                    <a data-toggle="collapse" href="#ad" data-parent="#index_nav" class="index-nav-father" id="ad_control">商户管理</a>
                     <ul id="ad" class="collapse">
                         <li><a href="" class="index-nav-son" id="ad_list">商户列表</a></li>
                         <li><a href="" class="index-nav-son" id="ad_check">待审核</a></li>
@@ -50,19 +50,28 @@
                     </ul>
                 </li>
             </ul>
+            <span class="glyphicon glyphicon-th-list nav-btn" id="nav_hide"></span>
+        </nav>
+        <nav class="nav_hide" id="index_nav_hide">
+            <span class="glyphicon glyphicon-th-list nav-btn" id="nav_show"></span>
         </nav>
         <!--/左导航-->
 
         <!--右内容-->
 
-        <div class="col-md-10 index-content">
+        <div class="index-part-right index-content">
 
+            <!--这里开始不同-->
+            <!--/这里开始不同-->
         </div>
 
         <!--/右内容-->
 
     </section>
     <!--/主体部分-->
+    <footer class="index-footer">
+        <span>CopyRight &copy; 2017 Sennki All Rights Reserved <a href="">粤ICP备案17065039号-1</a></span>
+    </footer>
 </section>
 
     <script src="public/js/jquery-3.2.1.min.js"></script>
