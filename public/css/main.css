@@ -394,13 +394,19 @@ html, body {
     margin-bottom: 20px;
 }
 
+.check-all {
+    padding: 10px 0;
+    width: 700px;
+    margin: 0 auto 10px;
+}
+
 .check-item-function {
     position: absolute;
     top: 5px;
     right: 0;
 }
 
-.check-item-function span {
+.check-item-function span,.check-all span {
     margin: 0 5px;
     cursor: pointer;
     color: #fff;
@@ -414,6 +420,23 @@ html, body {
 
 .check-reject {
     background-color: #d9534f;
+}
+
+.check-all-btn {
+    background-color: #5bc0de;
+}
+
+.check-choose {
+    color: #398439;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 16px;
+    display: none;
+}
+
+.check-item.active .check-choose {
+    display: block;
 }
 
 .check-item-header {
@@ -447,14 +470,6 @@ html, body {
     padding-top: 20px;
 }
 
-.check-item-content-cover {
-    width: 190px;
-    height: 105px;
-    margin-right: 18px;
-    border-radius: 4px;
-    background-position: 50%;
-}
-
 .check-item-content-wrap {
     flex: 1;
 }
@@ -462,11 +477,6 @@ html, body {
 .check-item-content {
     word-wrap: break-word;
     word-break: break-all;
-    overflow : hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     font-size: 16px;
 }
 
@@ -484,25 +494,11 @@ html, body {
 .check-item-img-group {
     width: 100%;
     padding: 10px 10px 0 10px;
-    display: none;
 }
 
 .check-item-content-img {
-    width: 100%;
-    background-position: 50%;
+    width: 100px;
+    height: 100px;
     margin-bottom: 10px;
-}
-
-/*激活阅读全文后样式*/
-
-.check-item-content-part.active .check-item-content-cover {
-    display: none;
-}
-
-.check-item-content-part.active .check-item-content {
-    display: block;
-}
-
-.check-item-content-part.active .check-item-img-group {
-    display: block;
+    margin-right: 10px;
 }

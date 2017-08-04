@@ -72,9 +72,11 @@ $(function () {
 			this.userAll()
 			this.userAllBan()
 			this.userAllBanCancel()
-			this.userCheckReadAll()
 			this.userCheckPass()
 			this.userCheckReject()
+			this.userCheckAll()
+			this.allCheckPast()
+			this.allCheckReject()
 		},
 
 		//用户禁言
@@ -227,11 +229,12 @@ $(function () {
 
 			$check_pass.on('click', function () {
 				var $father = $(this).parents('.check-item'),
-					id = $father.data('id')
+					kind = $father.data()
 				/*$.ajax({
 					url: globalData.host,
 					data: {
-						id: id
+						id: kind.id,
+						type: kind.type
 					},
 					success: function () {
 
@@ -247,11 +250,12 @@ $(function () {
 
 			$check_pass.on('click', function () {
 				var $father = $(this).parents('.check-item'),
-					id = $father.data('id')
+					kind = $father.data()
 				/*$.ajax({
 				 url: globalData.host,
 				 data: {
-				 id: id
+				 id: kind.id
+				 type: kind.type
 				 },
 				 success: function () {
 
@@ -261,8 +265,105 @@ $(function () {
 			})
 		},
 
+		//获取审核id
+		getCheckID: function (target) {
+			var data = []
+
+			for (var i = 0; i < target.length; i++){
+				data.push($(target[i]).data().id)
+			}
+			return data
+		},
+
+		//全选通过
+		allCheckPast: function () {
+			var $check_all_past = $('#check_all_past')
+
+			$check_all_past.on('click', function () {
+				var kind = $('#check_all').data()
+				if (1 === kind.status){
+					return false
+				}else if (2 === kind.status){
+					var $all_item = $('.check-item'),
+						data = funcUser.getCheckID($all_item)
+					if (confirm('确定通过所有信息？')){
+						/**
+						 * 发送请求
+						 * */
+						/*$.ajax({
+						 url: globalData.host,
+						 method: 'POST',
+						 data: {
+						 id: data,
+						 type: kind.type
+						 },
+						 success: function () {
+
+						 }
+						 })*/
+
+						//重载页面
+						window.location.reload()
+					}
+				}
+			})
+		},
+
+		//全选拒绝
+		allCheckReject: function () {
+			var $check_all_reject = $('#check_all_reject')
+
+			$check_all_reject.on('click', function () {
+				var kind = $('#check_all').data()
+
+				if (1 === kind.status){
+					return false
+				}else if (2 === kind.status){
+					var $all_item = $('.check-item'),
+						data = funcUser.getCheckID($all_item)
+					if ('确定拒绝所有信息？'){
+						/**
+						 * 发送请求
+						 * */
+						/*$.ajax({
+						 url: globalData.host,
+						 method: 'POST',
+						 data: {
+						 id: data,
+						 type: kind.type
+						 },
+						 success: function () {
+
+						 }
+						 })*/
+						window.location.reload()
+					}
+				}
+			})
+		},
+
+		//用户全选
+		userCheckAll: function () {
+			var $check_all = $('#check_all')
+
+			$check_all.on('click', function () {
+				var $all_item = $('.check-item'),
+					status = $(this).data('status')
+				//1代表未选中，2代表选中
+				if (1 === status){
+					$(this).html('取消')
+					$all_item.addClass('active')
+					status = $(this).data('status', 2)
+				}else if (2 === status){
+					$(this).html('全选')
+					$all_item.removeClass('active')
+					status = $(this).data('status', 1)
+				}
+			})
+		}
+
 		//用户审核阅读全文
-		userCheckReadAll: function () {
+		/*userCheckReadAll: function () {
 			var $read_all = $('.check-read-all')
 			$read_all.on('click', function () {
 
@@ -286,7 +387,7 @@ $(function () {
 					$text.html('阅读全文')
 				}
 			})
-		},
+		},*/
 	}
 
 	//启动程序
