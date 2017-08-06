@@ -64,7 +64,7 @@ $(function () {
 
 	}
 
-	//用户管理函数
+	//管理函数
 	var funcUser = {
 		//初始化
 		init: function () {
@@ -77,6 +77,8 @@ $(function () {
 			this.userCheckAll()
 			this.allCheckPast()
 			this.allCheckReject()
+			this.deletePast()
+			this.infoAll()
 		},
 
 		//用户禁言
@@ -120,7 +122,7 @@ $(function () {
 			})
 		},
 		
-		//全选
+		//用户列表全选
 		userAll: function () {
 			var $user_all = $('#user_all'),
 				$checkbox = $user_all.find("input[type='checkbox']"),
@@ -181,19 +183,21 @@ $(function () {
 
 			$user_ban_all.on('click', function () {
 				var $user_name = $('.user-name')
-				data = funcUser.userAllBanFunc($user_name, true)
-				if(data.length){
-					/**
-					 * 发起请求
-					 * */
-					/*$.ajax({
-					 url: globalData.host,
-					 method: 'POST',
-					 data: data,
-					 success: function () {
+				if (confirm('确定全部禁言吗？')){
+					data = funcUser.userAllBanFunc($user_name, true)
+					if(data.length){
+						/**
+						 * 发起请求
+						 * */
+						/*$.ajax({
+						 url: globalData.host,
+						 method: 'POST',
+						 data: data,
+						 success: function () {
 
-					 }
-					 })*/
+						 }
+						 })*/
+					}
 				}
 			})
 		},
@@ -205,25 +209,27 @@ $(function () {
 
 			$user_ban_all_cancel.on('click', function () {
 				var $user_name = $('.user-name')
-				data = funcUser.userAllBanFunc($user_name, false)
+				if (confirm('确定全部取消禁言吗')){
+					data = funcUser.userAllBanFunc($user_name, false)
 
-				if(data.length){
-					/**
-					 * 发起请求
-					 * */
-					/*$.ajax({
-					 url: globalData.host,
-					 method: 'POST',
-					 data: data,
-					 success: function () {
+					if(data.length){
+						/**
+						 * 发起请求
+						 * */
+						/*$.ajax({
+						 url: globalData.host,
+						 method: 'POST',
+						 data: data,
+						 success: function () {
 
-					 }
-					 })*/
+						 }
+						 })*/
+					}
 				}
 			})
 		},
 
-		//用户审核通过
+		//单条审核通过
 		userCheckPass: function () {
 			var $check_pass = $('.check-pass')
 
@@ -244,7 +250,7 @@ $(function () {
 			})
 		},
 
-		//用户审核拒绝
+		//单条审核拒绝
 		userCheckReject: function () {
 			var $check_pass = $('.check-pass')
 
@@ -342,7 +348,7 @@ $(function () {
 			})
 		},
 
-		//用户全选
+		//审核全选
 		userCheckAll: function () {
 			var $check_all = $('#check_all')
 
@@ -358,6 +364,51 @@ $(function () {
 					$(this).html('全选')
 					$all_item.removeClass('active')
 					status = $(this).data('status', 1)
+				}
+			})
+		},
+
+		//删除已通过信息
+		deletePast: function () {
+			var del_btn = $('.user-past-del')
+
+			del_btn.on('click', function () {
+				if (confirm('确定删除该信息吗')){
+					var $father = $(this).parents('table'),
+						id = $(this).data('id')
+
+					/**
+					 * 发送请求
+					 * */
+					/*$.ajax({
+						url: globalData.host,
+						data: {
+							id: id
+						},
+						success: function () {
+
+						}
+					})*/
+					$father.remove()
+					return false
+				}
+			})
+		},
+
+		//全选信息
+		infoAll: function () {
+			var $info_all_btn = $('#info_all'),
+				$checkbox = $info_all_btn.find("input[type='checkbox']"),
+				$info_all = $('.past-content')
+
+			$info_all_btn.on('click', function () {
+				var check = $checkbox.prop('checked')
+				if (check){
+					$checkbox.prop('checked', false)
+					$info_all.prop('checked', false)
+				}else {
+					$checkbox.prop('checked', true)
+					$info_all.prop('checked', true)
 				}
 			})
 		}

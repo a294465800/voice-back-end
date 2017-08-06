@@ -502,3 +502,43 @@ html, body {
     margin-bottom: 10px;
     margin-right: 10px;
 }
+
+/*
+    通过样式
+*/
+.voice-past-table tr:hover {
+    background-color: #eee!important;
+}
+
+.middle td {
+    vertical-align: middle!important;
+}
+
+.voice-past-content {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.user-past-check,.user-past-del {
+    margin: 5px 0;
+    display: block;
+}
+
+.past-check-search {
+    margin-bottom: 20px;
+}
+
+.past-caption {
+    background-color: #eee;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.past-caption button {
+    margin: 0 30px;
+}
