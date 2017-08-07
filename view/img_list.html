@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../public/build/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="icon" href="../public/images/logo2.ico" type="image/x-icon">
     <link rel="stylesheet" href="../public/css/main.css">
+    <!--留空放css-->
+    <!--/留空放css-->
 </head>
 <body>
 <section class="index-wrap">
@@ -72,31 +74,17 @@
 
             <!--面包屑导航-->
             <ol class="breadcrumb">
-                <li>商户管理</li>
-                <li class="active">已通过</li>
+                <li>广告图片管理</li>
+                <li class="active">广告列表</li>
             </ol>
             <!--/面包屑导航-->
 
-            <!--搜索-->
-            <div class="search past-check-search">
-                <form action="">
-                    <div class="search-input">
-                        <div class="form-group">
-                            <label class="sr-only">搜索</label>
-                            <input type="text" class="form-control" name="search" placeholder="输入昵称">
-                            <button type="submit" class="search-btn"><span class="glyphicon glyphicon-search"></span></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!--/搜索-->
-
             <div class="past-caption">
                 <div class="form-inline">
-                    <div class="checkbox all-checkbox" id="info_all">
+                    <div class="checkbox all-checkbox" id="ad_all">
                         <input type="checkbox">全选
                     </div>
-                    <button type="button" class="btn index-btn" id="del_all_past">删除</button>
+                    <button type="button" class="btn index-btn" id="del_all_ad">删除</button>
                 </div>
             </div>
 
@@ -105,42 +93,32 @@
 
                 <thead class="text-center table-bordered">
                 <tr>
-                    <td class="col-md-3">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" class="past-content" data-id="1">ID:123123213
-                            </label>
-                        </div>
-                    </td>
-                    <td class="col-md-2">用户</td>
-                    <td class="col-md-2">发布时间</td>
-                    <td class="col-md-2">评论次数</td>
-                    <td class="col-md-2">点赞次数</td>
+                    <td class="col-md-3"></td>
+                    <td class="col-md-2">备注</td>
+                    <td class="col-md-3">广告封面地址</td>
+                    <td class="col-md-3">广告跳转地址</td>
                     <td class="col-md-1">操作</td>
                 </tr>
                 </thead>
 
                 <!--表信息-->
                 <tbody class="text-center user-table voice-past-table table-bordered">
-                    <tr>
-                        <td class="col-md-3 text-left" title="内容">
-                            <div class="voice-past-content">
-                                判刑是本着教育和维护社会安全的目的来实施的，所以个人认为，如果你都永久ED了，那就不会有任何强奸性质的危害，应当立即释放。
-                                <br>
-                                P.S.
-                                <br>
-                                大家不应该忽略题目“服药彻底消灭性欲望”的设定（逃
-                            </div>
-                        </td>
-                        <td class="col-md-2" title="用户">飞翔的猪</td>
-                        <td class="col-md-2" title="发布时间">2017-06-22</td>
-                        <td class="col-md-2" title="评论次数">11次</td>
-                        <td class="col-md-2 status" title="点赞次数">2喜欢</td>
-                        <td class="col-md-1" title="操作">
-                            <a href="single_page.html" class="link user-past-check" data-id="1">查看</a>
-                            <a href="" class="link user-past-del" data-id="1">删除</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td class="col-md-3" title="ID">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="ad-content" data-id="1">123123213
+                            </label>
+                        </div>
+                    </td>
+                    <td class="col-md-2" title="备注">XXX广告</td>
+                    <td class="col-md-3" title="广告封面地址">https://www.sennki.com</td>
+                    <td class="col-md-3" title="广告跳转地址">https://www.google.com</td>
+                    <td class="col-md-1" title="操作">
+                        <a href="img_upload.html" class="link user-past-check">查看</a>
+                        <a href="" class="link ad_del" data-id="1">删除</a>
+                    </td>
+                </tr>
                 </tbody>
                 <!--/表信息-->
             </table>
@@ -151,17 +129,10 @@
 
                 <thead class="text-center table-bordered">
                 <tr>
-                    <td class="col-md-3">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" class="past-content" data-id="2">ID:123123213
-                            </label>
-                        </div>
-                    </td>
-                    <td class="col-md-2">用户</td>
-                    <td class="col-md-2">发布时间</td>
-                    <td class="col-md-2">评论次数</td>
-                    <td class="col-md-2">点赞次数</td>
+                    <td class="col-md-3"></td>
+                    <td class="col-md-2">备注</td>
+                    <td class="col-md-3">广告封面地址</td>
+                    <td class="col-md-3">广告跳转地址</td>
                     <td class="col-md-1">操作</td>
                 </tr>
                 </thead>
@@ -169,22 +140,19 @@
                 <!--表信息-->
                 <tbody class="text-center user-table voice-past-table table-bordered">
                 <tr>
-                    <td class="col-md-3 text-left" title="内容">
-                        <div class="voice-past-content">
-                            判刑是本着教育和维护社会安全的目的来实施的，所以个人认为，如果你都永久ED了，那就不会有任何强奸性质的危害，应当立即释放。
-                            <br>
-                            P.S.
-                            <br>
-                            大家不应该忽略题目“服药彻底消灭性欲望”的设定（逃
+                    <td class="col-md-3" title="ID">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="ad-content" data-id="1">123123213
+                            </label>
                         </div>
                     </td>
-                    <td class="col-md-2" title="用户">飞翔的猪</td>
-                    <td class="col-md-2" title="发布时间">2017-06-22</td>
-                    <td class="col-md-2" title="评论次数">11次</td>
-                    <td class="col-md-2 status" title="点赞次数">2喜欢</td>
+                    <td class="col-md-2" title="备注">XXX广告</td>
+                    <td class="col-md-3" title="广告封面地址">https://www.sennki.com</td>
+                    <td class="col-md-3" title="广告跳转地址">https://www.google.com</td>
                     <td class="col-md-1" title="操作">
-                        <a href="single_page.html" class="link user-past-check" data-id="2">查看</a>
-                        <a href="" class="link user-past-del" data-id="2">删除</a>
+                        <a href="img_upload.html" class="link user-past-check">查看</a>
+                        <a href="" class="link ad_del" data-id="1">删除</a>
                     </td>
                 </tr>
                 </tbody>
@@ -192,12 +160,6 @@
             </table>
             <!--/表内容循环-->
 
-
-
-            <!--页码放这里-->
-            <div class="page">
-            </div>
-            <!--/页码放这里-->
 
             <!--/这里开始不同-->
         </div>
@@ -218,9 +180,9 @@
     <!--留空js位置-->
     <script>
         $(function () {
-            $('#ad_control').addClass('active')
-            $('#ad').collapse()
-            $('#ad_past').addClass('active')
+            $('#img_control').addClass('active')
+            $('#img').collapse()
+            $('#img_list').addClass('active')
         })
     </script>
     <!--/留空js位置-->

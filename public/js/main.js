@@ -42,6 +42,7 @@ $(function () {
 		init: function () {
 			this.appSwitch()
 			this.navSwitch()
+			this.logout()
 		},
 
 		//区小程序切换
@@ -80,6 +81,17 @@ $(function () {
 			})
 		},
 
+		//退出登录
+		logout: function () {
+			var $logout = $('#logout')
+
+			$logout.on('click', function () {
+				if(confirm('确定退出登录吗？')){
+
+				}
+			})
+		}
+
 	}
 
 	//管理函数
@@ -101,6 +113,9 @@ $(function () {
 			this.deleteComments()
 			this.nextComments()
 			this.deleteSingleInfo()
+			this.adAll()
+			this.deleteAllad()
+			this.deleteAd()
 		},
 
 		//用户禁言
@@ -205,20 +220,22 @@ $(function () {
 
 			$user_ban_all.on('click', function () {
 				var $user_name = $('.user-name')
-				if (confirm('确定全部禁言吗？')){
-					data = funcUser.userAllBanFunc($user_name, true)
-					if(data.length){
-						/**
-						 * 发起请求
-						 * */
-						/*$.ajax({
-						 url: globalData.host,
-						 method: 'POST',
-						 data: data,
-						 success: function () {
+				data = funcControl.userAllBanFunc($user_name, true)
+				if(data.length){
+					if (confirm('确定全部禁言吗？')){
+						if(data.length){
+							/**
+							 * 发起请求
+							 * */
+							/*$.ajax({
+							 url: globalData.host,
+							 method: 'POST',
+							 data: data,
+							 success: function () {
 
-						 }
-						 })*/
+							 }
+							 })*/
+						}
 					}
 				}
 			})
@@ -231,21 +248,23 @@ $(function () {
 
 			$user_ban_all_cancel.on('click', function () {
 				var $user_name = $('.user-name')
-				if (confirm('确定全部取消禁言吗')){
-					data = funcUser.userAllBanFunc($user_name, false)
+				data = funcControl.userAllBanFunc($user_name, false)
+				if(data.length){
+					if (confirm('确定全部取消禁言吗')){
 
-					if(data.length){
-						/**
-						 * 发起请求
-						 * */
-						/*$.ajax({
-						 url: globalData.host,
-						 method: 'POST',
-						 data: data,
-						 success: function () {
+						if(data.length){
+							/**
+							 * 发起请求
+							 * */
+							/*$.ajax({
+							 url: globalData.host,
+							 method: 'POST',
+							 data: data,
+							 success: function () {
 
-						 }
-						 })*/
+							 }
+							 })*/
+						}
 					}
 				}
 			})
@@ -313,25 +332,27 @@ $(function () {
 					return false
 				}else if (2 === kind.status){
 					var $all_item = $('.check-item'),
-						data = funcUser.getCheckID($all_item)
-					if (confirm('确定通过所有信息？')){
-						/**
-						 * 发送请求
-						 * */
-						/*$.ajax({
-						 url: globalData.host,
-						 method: 'POST',
-						 data: {
-						 id: data,
-						 type: kind.type
-						 },
-						 success: function () {
+						data = funcControl.getCheckID($all_item)
+					if(data.length){
+						if (confirm('确定通过所有信息？')){
+							/**
+							 * 发送请求
+							 * */
+							/*$.ajax({
+							 url: globalData.host,
+							 method: 'POST',
+							 data: {
+							 id: data,
+							 type: kind.type
+							 },
+							 success: function () {
 
-						 }
-						 })*/
+							 }
+							 })*/
 
-						//重载页面
-						window.location.reload()
+							//重载页面
+							window.location.reload()
+						}
 					}
 				}
 			})
@@ -348,23 +369,25 @@ $(function () {
 					return false
 				}else if (2 === kind.status){
 					var $all_item = $('.check-item'),
-						data = funcUser.getCheckID($all_item)
-					if ('确定拒绝所有信息？'){
-						/**
-						 * 发送请求
-						 * */
-						/*$.ajax({
-						 url: globalData.host,
-						 method: 'POST',
-						 data: {
-						 id: data,
-						 type: kind.type
-						 },
-						 success: function () {
+						data = funcControl.getCheckID($all_item)
+					if(data.length){
+						if ('确定拒绝所有信息？'){
+							/**
+							 * 发送请求
+							 * */
+							/*$.ajax({
+							 url: globalData.host,
+							 method: 'POST',
+							 data: {
+							 id: data,
+							 type: kind.type
+							 },
+							 success: function () {
 
-						 }
-						 })*/
-						window.location.reload()
+							 }
+							 })*/
+							window.location.reload()
+						}
 					}
 				}
 			})
@@ -450,23 +473,23 @@ $(function () {
 					}
 				}
 
-				/**
-				* 发送请求
-				* */
-				/*if(confirm('确认删除所选信息吗？')){
-					$.ajax({
+				if(data.length){
+					/**
+					 * 发送请求
+					 * */
+					/*if(confirm('确认删除所选信息吗？')){
+					 $.ajax({
 					 url: globalData.host,
 					 method: 'POST',
 					 data: data,
 					 success: {
 
-				        //重载页面
-				        window.location.reload()
+					 //重载页面
+					 window.location.reload()
 					 }
 					 })
-				}*/
-
-
+					 }*/
+				}
 			})
 		},
 
@@ -517,7 +540,7 @@ $(function () {
 							id: id
 						},
 						success: function () {
-
+					        $father.remove()
 						}
 					})*/
 					$father.remove()
@@ -596,34 +619,91 @@ $(function () {
 				//测试用，以上可删
 
 			})
-		}
+		},
 
-		//用户审核阅读全文
-		/*userCheckReadAll: function () {
-			var $read_all = $('.check-read-all')
-			$read_all.on('click', function () {
+		//广告列表全选按钮
+		adAll: function () {
+			var $ad_all_btn = $('#ad_all'),
+				$checkbox = $ad_all_btn.find("input[type='checkbox']"),
+				$ad_all = $('.ad-content')
 
-				//status为1是缩略模式，status为2是展开模式
-				var status = $(this).data('status'),
-					$icon = $(this).find('.glyphicon'),
-					$text = $(this).find('.check-read-all-text'),
-					$content = $(this).siblings('.check-item-content-part')
-
-				if(status === 1){
-					$(this).data('status', 2)
-					$content.addClass('active')
-					$icon.removeClass('glyphicon-chevron-down')
-					$icon.addClass('glyphicon-chevron-up')
-					$text.html('收起')
-				}else if(status === 2){
-					$(this).data('status', 1)
-					$content.removeClass('active')
-					$icon.removeClass('glyphicon-chevron-up')
-					$icon.addClass('glyphicon-chevron-down')
-					$text.html('阅读全文')
+			$ad_all_btn.on('click', function () {
+				var check = $checkbox.prop('checked')
+				if (check){
+					$checkbox.prop('checked', false)
+					$ad_all.prop('checked', false)
+				}else {
+					$checkbox.prop('checked', true)
+					$ad_all.prop('checked', true)
 				}
 			})
-		},*/
+		},
+
+		//多选删除广告
+		deleteAllad: function () {
+			var $delete_btn = $('#del_all_ad')
+
+			$delete_btn.on('click', function () {
+				var $allAd = $('.ad-content'),
+					data = []
+
+				for(var i = 0; i < $allAd.length; i++){
+					//保存被选中项的id
+					if($($allAd[i]).prop('checked')){
+						data.push($($allAd[i]).data('id'))
+					}
+				}
+				if(data.length){
+					/**
+					 * 发送请求
+					 * */
+					/*if(confirm('确认删除所选广告吗？')){
+					 $.ajax({
+					 url: globalData.host,
+					 method: 'POST',
+					 data: data,
+					 success: {
+
+					 //重载页面
+					 window.location.reload()
+					 }
+					 })
+					 }*/
+				}
+
+			})
+		},
+
+		//单条广告删除
+		deleteAd: function () {
+			var $ad_del = $('.ad_del')
+
+			$ad_del.on('click', function () {
+				var $father = $(this).parents('table'),
+					id = $(this).data('id')
+				if(confirm('确认删除所选广告吗？')){
+					/**
+					 * 发送请求
+					 * */
+					/*
+						 $.ajax({
+							 url: globalData.host,
+							 method: 'POST',
+							 data: {
+							    id: id
+							 },
+							 success: {
+					            $father.remove()
+							 }
+						 })
+					 */
+
+					$father.remove()
+					return false
+				}
+			})
+		}
+
 	}
 
 	//启动程序
