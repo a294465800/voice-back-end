@@ -6,7 +6,25 @@ $(function () {
 
 	//所有数据
 	var globalData = {
-		host: 'https://sennkisystem.cn/api'
+		host: 'https://sennkisystem.cn/api',
+
+		//评论模板
+		template_comment: '<div class="single-item-comments-item">' +
+		'<div class="single-item-header">' +
+		'<div>' +
+		'<img src="{{src}}" alt="{{name}}" class="check-item-header-img">' +
+		'<span class="single-item-header-name">{{name}}</span>' +
+		'</div>' +
+		'<span class="delete-comment" data-id="{{id}}">删除评论</span>' +
+		'</div>' +
+		'<div class="single-item-comments-item-content">' +
+		'{{content}}' +
+		'</div>' +
+		'</div>',
+
+		//评论页数
+		comment_page: 1,
+		more_comment_flag: false,
 	}
 
 	//中间件
@@ -14,7 +32,7 @@ $(function () {
 
 		init: function () {
 			funcCommon.init()
-			funcUser.init()
+			funcControl.init()
 		}
 	}
 
@@ -65,7 +83,7 @@ $(function () {
 	}
 
 	//管理函数
-	var funcUser = {
+	var funcControl = {
 		//初始化
 		init: function () {
 			this.userBan()
@@ -80,6 +98,9 @@ $(function () {
 			this.deletePast()
 			this.infoAll()
 			this.deleteAllInfo()
+			this.deleteComments()
+			this.nextComments()
+			this.deleteSingleInfo()
 		},
 
 		//用户禁言
@@ -428,7 +449,6 @@ $(function () {
 						data.push($($allInfo[i]).data('id'))
 					}
 				}
-				console.log(data)
 
 				/**
 				* 发送请求
@@ -446,6 +466,134 @@ $(function () {
 					 })
 				}*/
 
+
+			})
+		},
+
+		//具体页面中，单条信息删除
+		deleteSingleInfo: function () {
+			var $single_del = $('#single_del')
+
+			$single_del.on('click',function () {
+				var $father = $(this).parents('.single-item'),
+					id = $(this).data('id')
+				if(confirm('确定删除该条信息吗？')){
+					/**
+					 * 请求
+					 * */
+					/*$.ajax({
+					 url: globalData.host,
+					 method: 'POST',
+					 data: {
+					 id: id
+					 },
+					 success: function () {
+
+					 }
+					 })*/
+					$father.remove()
+					window.history.back(-1)
+				}
+			})
+		},
+
+		//评论删除
+		deleteComments: function () {
+			var $delete_comment = $('.delete-comment')
+
+			$delete_comment.off('click')
+			$delete_comment.on('click', function () {
+				var $father = $(this).parents('.single-item-comments-item'),
+					id = $(this).data('id')
+				if(confirm('确定删除该评论吗？')){
+
+					/**
+					* 请求
+					* */
+					/*$.ajax({
+						url: globalData.host,
+						method: 'POST',
+						data: {
+							id: id
+						},
+						success: function () {
+
+						}
+					})*/
+					$father.remove()
+				}
+			})
+		},
+
+		//评论模板数据修改
+		setCommentData: function (data) {
+			return globalData.template_comment.replace(/{{id}}/g, data.id).replace(/{{name}}/g, data.name).replace(/{{src}}/g, data.src).replace(/{{content}}/g, data.content)
+		},
+
+		//评论拼接
+		fillInComment: function (data, $father) {
+			for(var i = 0; i < data.length; i++){
+				var $item = $(funcControl.setCommentData(data[i]))
+				$father.append($item)
+			}
+			funcControl.deleteComments()
+		},
+		
+		//下一页评论加载
+		nextComments: function () {
+			var $more_comments = $('#more_comments')
+
+			$more_comments.on('click',function () {
+				if(globalData.more_comment_flag){
+					return false
+				}
+				var $that = $(this)
+
+				//在请求结束前不允许再次触发
+				globalData.more_comment_flag = true
+
+				$that.html('加载中')
+				var $father = $that.siblings('.single-item-comments-item-wrap')
+
+				/**
+				* 请求更多评论
+				* */
+				/*$.ajax({
+					url: globalData.host,
+					data: {
+						page: ++globalData.comment_page
+					},
+					success: function (res) {
+						if(200 == res.data.code){
+							funcControl.fillInComment(res.data.data, $father)
+							$that.html('查看更多')
+							globalData.more_comment_flag = false
+						}else {
+							alert(res.data.msg)
+							$that.html('暂不可用')
+						}
+					}
+				})*/
+
+				//测试用，以下可删
+				var test_data = [
+					{
+						id: 1,
+						name: '小猫',
+						src: 'http://img.sc115.com/tx/ns/cpic/1504axse4toevz5.jpg',
+						content: '这是一条新的评论！'
+					},
+					{
+						id: 2,
+						name: '小狗',
+						src: 'http://img.sc115.com/tx/ns/cpic/1504axse4toevz5.jpg',
+						content: '这是第二条新的评论！'
+					}
+				]
+				funcControl.fillInComment(test_data, $father)
+				$that.html('查看更多')
+				globalData.more_comment_flag = false
+				//测试用，以上可删
 
 			})
 		}

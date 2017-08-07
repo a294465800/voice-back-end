@@ -542,3 +542,71 @@ html, body {
 .past-caption button {
     margin: 0 30px;
 }
+
+/*
+    单条信息页面
+*/
+
+#single_del {
+    background-color: #d9534f;
+}
+
+.single-item-img-group {
+    width: 100%;
+    padding: 10px 10px 0 10px;
+}
+
+.single-item-content-img {
+    width: 300px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.single-item-comments-list {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.single-item-comments-header {
+    color: #666;
+    text-indent: 2em;
+}
+
+.single-item-comments-item {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.single-item-comments-item:hover {
+    background-color: #eee;
+}
+
+.single-item-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.single-item-header-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.single-item-comments-item-content {
+    color: #333;
+    text-indent: 2em;
+}
+
+.delete-comment {
+    background-color: #d9534f;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    align-self: flex-end;
+}
