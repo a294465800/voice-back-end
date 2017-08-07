@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../public/build/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="icon" href="../public/images/logo2.ico" type="image/x-icon">
     <link rel="stylesheet" href="../public/css/main.css">
+    <!--留空放css-->
+    <link rel="stylesheet" href="../public/build/webuploader/webuploader.css">
+    <!--/留空放css-->
 </head>
 <body>
 <section class="index-wrap">
@@ -77,6 +80,43 @@
             </ol>
             <!--/面包屑导航-->
 
+            <!--上传广告封面展示-->
+            <div class="ad-cover-upload">
+                <h3 class="ad-cover-upload-title">广告封面</h3>
+                <div class="webuploader-container">
+                    <div class="ad-cover-upload-content">
+                        <div id="adImgCoverPre" class="ad-cover-upload-content-img">暂无图片</div>
+                        <div id="adCoverPicker" class="webuploader-container">选择图片</div>
+                    </div>
+                </div>
+            </div>
+            <!--/上传广告封面展示-->
+
+            <!--上传广告跳转展示-->
+            <div class="ad-cover-upload">
+                <h3 class="ad-cover-upload-title">广告跳转后图片</h3>
+                <div class="webuploader-container">
+                    <div class="ad-cover-upload-content">
+                        <div id="adImgPre" class="ad-cover-upload-content-img">暂无图片</div>
+                        <div id="adPicker" class="webuploader-container">选择图片</div>
+                    </div>
+                </div>
+            </div>
+            <!--/上传广告跳转展示-->
+
+            <div class="ad-submit-wrap">
+                <form action="">
+                    <div class="form-group clearfix">
+                        <label for="ad_remark" class="control-label col-md-2 text-right">备注：</label>
+                        <div class="col-md-10">
+                            <input type="text" placeholder="该条广告的一些备注" class="form-control" id="ad_remark">
+                        </div>
+                    </div>
+                    <div class="ad-submit">
+                        <button type="submit" class="webuploader-pick">发布广告</button>
+                    </div>
+                </form>
+            </div>
 
             <!--/这里开始不同-->
         </div>
@@ -95,6 +135,8 @@
     <script src="../public/js/main.js"></script>
 
     <!--留空js位置-->
+    <script src="../public/build/webuploader/webuploader.min.js"></script>
+    <script src="../public/js/upload_function.js"></script>
     <script>
         $(function () {
             $('#img_control').addClass('active')
