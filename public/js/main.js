@@ -79,6 +79,7 @@ $(function () {
 			this.allCheckReject()
 			this.deletePast()
 			this.infoAll()
+			this.deleteAllInfo()
 		},
 
 		//用户禁言
@@ -395,7 +396,7 @@ $(function () {
 			})
 		},
 
-		//全选信息
+		//全选已通过信息
 		infoAll: function () {
 			var $info_all_btn = $('#info_all'),
 				$checkbox = $info_all_btn.find("input[type='checkbox']"),
@@ -410,6 +411,42 @@ $(function () {
 					$checkbox.prop('checked', true)
 					$info_all.prop('checked', true)
 				}
+			})
+		},
+		
+		//多选删除已通过信息
+		deleteAllInfo: function () {
+			var $delete_btn = $('#del_all_past')
+
+			$delete_btn.on('click', function () {
+				var $allInfo = $('.past-content'),
+					data = []
+
+				for(var i = 0; i < $allInfo.length; i++){
+					//保存被选中项的id
+					if($($allInfo[i]).prop('checked')){
+						data.push($($allInfo[i]).data('id'))
+					}
+				}
+				console.log(data)
+
+				/**
+				* 发送请求
+				* */
+				/*if(confirm('确认删除所选信息吗？')){
+					$.ajax({
+					 url: globalData.host,
+					 method: 'POST',
+					 data: data,
+					 success: {
+
+				        //重载页面
+				        window.location.reload()
+					 }
+					 })
+				}*/
+
+
 			})
 		}
 

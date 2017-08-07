@@ -84,6 +84,15 @@
             </div>
             <!--/搜索-->
 
+            <div class="past-caption">
+                <div class="form-inline">
+                    <div class="checkbox all-checkbox" id="info_all">
+                        <input type="checkbox">全选
+                    </div>
+                    <button type="button" class="btn index-btn" id="del_all_past">删除</button>
+                </div>
+            </div>
+
             <!--表内容循环-->
             <table class="table table-responsive table-striped middle">
 
@@ -92,7 +101,7 @@
                     <td class="col-md-3">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" class="past-content">ID:123123213
+                                <input type="checkbox" class="past-content" data-id="1">ID:123123213
                             </label>
                         </div>
                     </td>
@@ -138,7 +147,7 @@
                     <td class="col-md-3">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" class="past-content">ID:123123213
+                                <input type="checkbox" class="past-content" data-id="2">ID:123123213
                             </label>
                         </div>
                     </td>
