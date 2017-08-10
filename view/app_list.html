@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一声后台管理</title>
+    <link rel="stylesheet" href="../public/build/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="icon" href="../public/images/logo2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../public/css/main.css">
+    <!--留空放css-->
+    <!--/留空放css-->
+</head>
+<body>
+<section class="index-wrap">
+    <!--头部-->
+    <header class="clearfix header">
+        <img class="pull-left logo_top" src="../public/images/logo.png" alt="第一声">
+        <div class="pull-left" id="switch_app">
+            <span>小程序一</span>
+            <div class="index-app-list" id="app_list">
+                <span>小程序一</span>
+                <a href="">小程序二</a>
+                <a href="">小程序三</a>
+            </div>
+        </div>
+        <div class="pull-right login-info">
+            <span>哈喽，卖女孩的小火柴</span>
+            <a href="" class="login-out" id="logout">退出</a>
+        </div>
+    </header>
+    <!--/头部-->
+
+    <!--主体部分-->
+    <section class="clearfix index-part">
+
+        <!--左导航-->
+        <nav class="index-part-left hidden-sm left-nav" id="index_nav">
+            <ul class="nav-list">
+                <li class="nav-list-each">
+                    <a data-toggle="collapse" href="#user" data-parent="#index_nav" class="index-nav-father" id="user_control">用户管理</a>
+                    <ul id="user" class="collapse">
+                        <li><a href="user-list.html" class="index-nav-son" id="user_list">用户列表</a></li>
+                        <li><a href="user_check.html" class="index-nav-son" id="user_check">待审核</a></li>
+                        <li><a href="user_past.html" class="index-nav-son" id="user_past">已通过</a></li>
+                    </ul>
+                </li>
+                <li class="nav-list-each">
+                    <a data-toggle="collapse" href="#ad" data-parent="#index_nav" class="index-nav-father" id="ad_control">商户管理</a>
+                    <ul id="ad" class="collapse">
+                        <li><a href="ad-list.html" class="index-nav-son" id="ad_list">商户列表</a></li>
+                        <li><a href="ad_check.html" class="index-nav-son" id="ad_check">待审核</a></li>
+                        <li><a href="ad_past.html" class="index-nav-son" id="ad_past">已通过</a></li>
+                    </ul>
+                </li>
+                <li class="nav-list-each">
+                    <a data-toggle="collapse" href="#img" data-parent="#index_nav" class="index-nav-father" id="img_control">广告图片管理</a>
+                    <ul id="img" class="collapse">
+                        <li><a href="img_list.html" class="index-nav-son" id="img_list">广告列表</a></li>
+                        <li><a href="img_upload.html" class="index-nav-son" id="img_upload">图片上传</a></li>
+                    </ul>
+                </li>
+                <li class="nav-list-each">
+                    <a data-toggle="collapse" href="#img" data-parent="#index_nav" class="index-nav-father" id="app_control">APP管理</a>
+                    <ul id="app" class="collapse">
+                        <li><a href="img_list.html" class="index-nav-son" id="app_check">APP列表</a></li>
+                        <li><a href="img_upload.html" class="index-nav-son" id="app_upload">新增APP</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <span class="glyphicon glyphicon-th-list nav-btn" id="nav_hide"></span>
+        </nav>
+        <nav class="nav_hide" id="index_nav_hide">
+            <span class="glyphicon glyphicon-th-list nav-btn" id="nav_show"></span>
+        </nav>
+        <!--/左导航-->
+
+        <!--右内容-->
+
+        <div class="index-part-right index-content">
+
+            <!--这里开始不同-->
+
+            <!--面包屑导航-->
+            <ol class="breadcrumb">
+                <li>APP管理</li>
+                <li class="active">APP列表</li>
+            </ol>
+            <!--/面包屑导航-->
+
+            <div class="past-caption">
+                <div class="form-inline">
+                    <div class="checkbox all-checkbox" id="app_all">
+                        <input type="checkbox">全选
+                    </div>
+                    <button type="button" class="btn index-btn" id="del_all_ad">删除</button>
+                </div>
+            </div>
+
+            <!--表内容循环-->
+            <table class="table table-responsive table-striped middle">
+
+                <thead class="text-center table-bordered">
+                <tr>
+                    <td class="col-md-2">ID</td>
+                    <td class="col-md-3">APPID</td>
+                    <td class="col-md-3">广告封面地址</td>
+                    <td class="col-md-3">广告跳转地址</td>
+                    <td class="col-md-1">操作</td>
+                </tr>
+                </thead>
+
+                <!--表信息-->
+                <tbody class="text-center user-table voice-past-table table-bordered">
+                <tr>
+                    <td class="col-md-3" title="ID">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="app-content" data-id="1">123123213
+                            </label>
+                        </div>
+                    </td>
+                    <td class="col-md-2" title="备注">XXX广告</td>
+                    <td class="col-md-3" title="广告封面地址">https://www.sennki.com</td>
+                    <td class="col-md-3" title="广告跳转地址">https://www.google.com</td>
+                    <td class="col-md-1" title="操作">
+                        <a href="img_upload.html" class="link user-past-check">查看</a>
+                        <a href="" class="link ad_del" data-id="1">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <!--/表信息-->
+            </table>
+            <!--/表内容循环-->
+
+            <!--表内容循环-->
+            <table class="table table-responsive table-striped middle">
+
+                <thead class="text-center table-bordered">
+                <tr>
+                    <td class="col-md-2">ID</td>
+                    <td class="col-md-3">备注</td>
+                    <td class="col-md-3">广告封面地址</td>
+                    <td class="col-md-3">广告跳转地址</td>
+                    <td class="col-md-1">操作</td>
+                </tr>
+                </thead>
+
+                <!--表信息-->
+                <tbody class="text-center user-table voice-past-table table-bordered">
+                <tr>
+                    <td class="col-md-3" title="ID">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="app-content" data-id="1">123123213
+                            </label>
+                        </div>
+                    </td>
+                    <td class="col-md-2" title="备注">XXX广告</td>
+                    <td class="col-md-3" title="广告封面地址">https://www.sennki.com</td>
+                    <td class="col-md-3" title="广告跳转地址">https://www.google.com</td>
+                    <td class="col-md-1" title="操作">
+                        <a href="img_upload.html" class="link user-past-check">查看</a>
+                        <a href="" class="link ad_del" data-id="1">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <!--/表信息-->
+            </table>
+            <!--/表内容循环-->
+
+
+            <!--/这里开始不同-->
+        </div>
+
+        <!--/右内容-->
+
+    </section>
+    <!--/主体部分-->
+    <footer class="index-footer">
+        <span>CopyRight &copy; 2017 Sennki All Rights Reserved <a href="">粤ICP备案17065039号-1</a></span>
+    </footer>
+</section>
+
+    <script src="../public/js/jquery-3.2.1.min.js"></script>
+    <script src="../public/build/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../public/js/main.js"></script>
+
+    <!--留空js位置-->
+    <script>
+        $(function () {
+            $('#app_control').addClass('active')
+            $('#app').collapse()
+            $('#app_check').addClass('active')
+        })
+    </script>
+    <!--/留空js位置-->
+</body>
+</html>
