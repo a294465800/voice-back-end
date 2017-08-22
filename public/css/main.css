@@ -706,3 +706,16 @@ html, body {
     /*width: 30px;*/
     /*height:30px;*/
 }
+
+/*新增视频组*/
+
+.check-item-video-group {
+    width: 100%;
+    padding: 10px 10px 0 10px;
+}
+
+.check-item-video-group video {
+    width: 300px;
+    display: inline-block;
+    margin: 5px 5px;
+}
